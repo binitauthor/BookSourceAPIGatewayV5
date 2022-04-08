@@ -1,4 +1,5 @@
-FROM adoptopenjdk/openjdk15:alpine-jre
+FROM adoptopenjdk/openjdk11
 VOLUME /tmp
-COPY build/libs/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+ARG JAR_FILE=build/libs/*.jar
+COPY ${JAR_FILE} ./
+ENTRYPOINT ["java","-jar","/rollingstone-ecommerce-product-catalog-k8s-api-1.0.jar"]
